@@ -51,13 +51,13 @@ func getInstruction(line string) instruction {
 //arg might be a numeric string, or it might be a wire name. returns either the number provided, or the value of the wire.
 func getArg(arg string) uint16 {
 	if reIsNumber.Match([]byte(arg)) {
-        i, err := strconv.Atoi(arg)
+		i, err := strconv.Atoi(arg)
 
-        if err != nil {
-            panic("Couldn't turn arg into int.")
-        }
+		if err != nil {
+			panic("Couldn't turn arg into int.")
+		}
 
-        return uint16(i)
+		return uint16(i)
 	}
 
 	return wireValues[arg]
@@ -93,7 +93,7 @@ func updateWaiting(wire string) {
 			for j, wait := range todo.waiting {
 				if wait == wire {
 					todo.waiting = append(todo.waiting[:j], todo.waiting[j+1:]...)
-                    todos[i] = todo
+					todos[i] = todo
 				}
 			}
 		}
@@ -117,8 +117,8 @@ func main() {
 		for i, todo := range todos {
 			if !todo.done && len(todo.waiting) == 0 {
 				todo.done = true
-                //ahem, structs are copies, not objects.
-                todos[i] = todo
+				//ahem, structs are copies, not objects.
+				todos[i] = todo
 				wire, val := getInstructionResults(todo)
 				wireValues[wire] = val
 				updateWaiting(wire)
@@ -127,7 +127,7 @@ func main() {
 		}
 	}
 
-    fmt.Println("value of wire a:", wireValues["a"])
+	fmt.Println("value of wire a:", wireValues["a"])
 }
 
 //this is hacked up a little for part 2, see bottom of this function to redo part 1
@@ -472,7 +472,7 @@ NOT ac -> ad
 NOT hn -> ho
 46065 -> b`
 
-//moved input for wire b to the bottom.
-//to redo part 1, replace the last line with "1674 -> b"
+	//moved input for wire b to the bottom.
+	//to redo part 1, replace the last line with "1674 -> b"
 	return strings.Split(input, "\n")
 }
