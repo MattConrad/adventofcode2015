@@ -45,8 +45,8 @@ def set_locations_from_lines(lines):
         distances[locations[0] + "." + locations[1]] = distance
         distances[locations[1] + "." + locations[0]] = distance
 
-#9 hops, longest distance is 147, so 10K is definitely longer
-shortest = 10000
+#9 hops, longest distance is 147, so 20K is definitely longer
+shortest = 20000
 longest = 0
 lines = get_lines()
 set_locations_from_lines(lines)
