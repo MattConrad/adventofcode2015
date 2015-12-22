@@ -62,10 +62,10 @@ func getIteratedBoard(tox int, toy int, begin map[cell]bool) map[cell]bool {
 			if !begin[loc] && neighbors == 3 {
 				newState = true
 			}
-            //force corners to "on". drop this check to get values for part 1
-            if (i == 0 || i == (tox -1)) && (j == 0 || j == (toy - 1)) {
-                newState = true
-            }
+			//force corners to "on". drop this check to get values for part 1
+			if (i == 0 || i == (tox-1)) && (j == 0 || j == (toy-1)) {
+				newState = true
+			}
 			final[loc] = newState
 		}
 	}
