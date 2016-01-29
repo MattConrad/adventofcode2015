@@ -41,18 +41,18 @@ func findHouse(start int, target int) (int, error) {
 func findLazyElfHouse(start int, target int) int {
 	houseTotals := make(map[int]int)
 
-    smallestHouse := target
-    //since the elves deliver 11 presents to each house, there is a house near target / 11 which immediately gets the target number
-    // first house can't be bigger than that, we can truncate search there.
-    for i := start; i < (target / 11 + 11); i++ {
+	smallestHouse := target
+	//since the elves deliver 11 presents to each house, there is a house near target / 11 which immediately gets the target number
+	// first house can't be bigger than that, we can truncate search there.
+	for i := start; i < (target/11 + 11); i++ {
 		//each elf only delivers to the first 50 multiples of his number.
 		for j := 1; j <= 50; j++ {
-            houseNumber := i * j
+			houseNumber := i * j
 			houseTotals[houseNumber] += i * 11
 
 			if houseTotals[houseNumber] >= target && houseNumber < smallestHouse {
-                smallestHouse = houseNumber
-                break
+				smallestHouse = houseNumber
+				break
 			}
 		}
 	}
@@ -62,18 +62,18 @@ func findLazyElfHouse(start int, target int) int {
 
 func main() {
 	target := 34000000
-    //some of the early houses can certainly be skipped. take a guess (and a chance) if you want to save some time
-    // i got burned on this in part 2, be careful
-    start := 1000
+	//some of the early houses can certainly be skipped. take a guess (and a chance) if you want to save some time
+	// i got burned on this in part 2, be careful
+	start := 1000
 
 	//uncomment the below for part 1, but be warned, it's slow
 	/*
-			houseNum, err := findHouse(start, target)
-			if err != nil {
-				panic(err)
-			}
+		houseNum, err := findHouse(start, target)
+		if err != nil {
+			panic(err)
+		}
 
-			fmt.Printf("First house with %d presents was %d.", target, houseNum)
+		fmt.Printf("First house with %d presents was %d.", target, houseNum)
 	*/
 
 	houseNum := findLazyElfHouse(start, target)
