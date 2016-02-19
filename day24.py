@@ -16,8 +16,8 @@ def has_valid_next_group(group, target_weight, group_count):
     return False
 
 def get_valid_first_groups(weights, group_count):
-    #at most, our smallest group will have 1/group_count elements
     target_weight = sum(weights) / group_count
+    #at most, our smallest group will have 1/group_count elements
     max_count = len(weights) / 3
     for i in range(1, max_count + 1):
         valids = []
