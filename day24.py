@@ -36,7 +36,6 @@ def get_valid_first_groups(weights, group_count):
     raise ValueError('Found no valid groups!')
 
 def find_best_qe(weights, group_count):
-    target_group_weight = sum(weights) / group_count
     valids = get_valid_first_groups(weights, group_count)
     return min([reduce(operator.mul, g, 1) for g in valids])
 
